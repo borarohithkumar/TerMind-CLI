@@ -1,0 +1,15 @@
+# Python Virtual Environments
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Massive AI Models & Data
+data/faiss_index.bin
+
+# OS generated files
+.DS_Store
+
+# Docker & DockerHub files
+.dockerignore
+DockerHub.md
