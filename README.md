@@ -60,7 +60,13 @@ Execute this command locally? [y/N]: y
 
 The backend is containerized for zero-downtime deployment. The HuggingFace ML models are pre-baked into the Docker image layer to ensure rapid boot times without downloading gigabytes of weights on restart.
 
+[![Docker Image Version](https://img.shields.io/docker/v/borarohithkumar/termind-api?sort=semver&label=Docker%20Hub)](https://hub.docker.com/r/borarohithkumar/termind-api)
+
+You can pull the official pre-compiled Machine Learning backend directly from Docker Hub:
+
 ```bash
-docker build -t termind-api:v2.0 .
-docker run -d -p 8000:8000 termind-api:v2.0
+docker pull borarohithkumar/termind-api:v2.0
+docker run -d -p 8000:8000 borarohithkumar/termind-api:v2.0
 ```
+
+_For more details, see the [official container documentation](https://hub.docker.com/r/borarohithkumar/termind-api) on Docker Hub._
