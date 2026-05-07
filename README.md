@@ -1,6 +1,6 @@
 # ☁️ TerMind (Terminal + Mind)
 
-An Enterprise-Grade, ML-Powered Hybrid NLP-to-Bash DevOps CLI.
+### An ML-Powered Hybrid NLP-to-Bash DevOps CLI.
 
 TerMind is a modern, distributed microservice that allows developers and system administrators to control their Linux and Docker environments using natural language. It translates human intent into accurate, executable Bash commands in milliseconds.
 
@@ -8,8 +8,10 @@ TerMind is a modern, distributed microservice that allows developers and system 
 
 TerMind solves the latency and hallucination problems of standard LLMs by using a Hybrid Routing Engine (inspired by research in Natural Language Translation for OS commands):
 
-- **Path A (The High-Speed Brain)**: A pre-compiled FAISS vector index holding 42,000+ verified DevOps commands. Powered by all-mpnet-base-v2, it performs semantic mathematical matching in milliseconds.
-- **Path B (The Generative Fallback)**: If a query is entirely novel (low confidence score), the system dynamically falls back to a locally hosted T5-Base generative neural network to synthesize a brand new command.
+- **Path A (The High-Speed Brain)**: A pre-compiled FAISS vector index holding 42,000+ verified commands. Powered by all-mpnet-base-v2, it performs semantic mathematical matching in milliseconds.
+- **Path B (Generative Fallback)**: When the retrieval confidence falls below a configured threshold, a T5-Base model generates a candidate shell command for the query.
+
+The CLI asks for user confirmation before executing a suggested command.
 
 ## Tech Stack
 
@@ -19,7 +21,7 @@ TerMind solves the latency and hallucination problems of standard LLMs by using 
 
 ## Installation (Linux & Termux)
 
-The client is a zero-dependency Python wrapper. The installation script automatically builds an isolated, protected virtual environment and maps the executable to your system's PATH.
+The client is a zero-dependency Python wrapper. The installation script automatically builds an isolated, protected virtual environment and maps the executable to your system's PATH, configuring `termind` command for use from your terminal.
 
 ```bash
 git clone https://github.com/borarohithkumar/TerMind-CLI.git
@@ -60,7 +62,13 @@ Execute this command locally? [y/N]: y
 
 The backend is containerized for zero-downtime deployment. The HuggingFace ML models are pre-baked into the Docker image layer to ensure rapid boot times without downloading gigabytes of weights on restart.
 
+[![Docker Image Version](https://img.shields.io/docker/v/borarohithkumar/termind-api?sort=semver&label=Docker%20Hub)](https://hub.docker.com/r/borarohithkumar/termind-api)
+
+You can pull the official pre-compiled Machine Learning backend directly from Docker Hub:
+
 ```bash
-docker build -t termind-api:v2.0 .
-docker run -d -p 8000:8000 termind-api:v2.0
+docker pull borarohithkumar/termind-api:v2.0
+docker run -d -p 8000:8000 borarohithkumar/termind-api:v2.0
 ```
+
+_For more details, see the [official container documentation](https://hub.docker.com/r/borarohithkumar/termind-api) on Docker Hub._

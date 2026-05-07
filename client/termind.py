@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 # Production Server Endpoint (AWS Microservice) or 127.0.0.1 for local testing
-API_URL = "http://18.60.42.147:8000/translate"
+API_URL = "https://api.rbkreator.me/translate"
 
 def print_banner():
     """Renders the CLI UI banner."""
@@ -42,7 +42,6 @@ def main():
             logic = data["logic_used"]
 
             # Display AI suggestion
-            print("\n" + "-"*50)
             print("\n" + "-"*50)
             print(f"⚙️  System   : {final_cmd}")
             print(f"🧠 Engine   : {logic}")
